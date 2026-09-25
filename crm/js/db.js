@@ -131,6 +131,7 @@ const demo = {
   load() {
     try { this.data = JSON.parse(localStorage.getItem(KEY)); } catch { this.data = null; }
     if (!this.data || !this.data.leads) this.data = seed();
+    (this.data.profiles || []).forEach(p => { if (p.full_name === "Demo Admin") p.full_name = "Admin"; });
     this.save();
   },
   save() { try { localStorage.setItem(KEY, JSON.stringify(this.data)); } catch { /* private mode */ } },
@@ -178,7 +179,7 @@ function seed() {
   const pick = a => a[Math.floor(rnd() * a.length)];
   const me = "demo-admin", c1 = "demo-c1", c2 = "demo-c2";
   const profiles = [
-    { id: me, full_name: "Demo Admin", email: "admin@demo.ifpi", role: "admin", active: true, created_at: iso(new Date()) },
+    { id: me, full_name: "Admin", email: "admin@demo.ifpi", role: "admin", active: true, created_at: iso(new Date()) },
     { id: c1, full_name: "Counsellor Asha", email: "asha@demo.ifpi", role: "counsellor", active: true, created_at: iso(new Date()) },
     { id: c2, full_name: "Counsellor Vikram", email: "vikram@demo.ifpi", role: "counsellor", active: true, created_at: iso(new Date()) },
   ];
