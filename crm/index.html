@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>IFPI CRM</title>
+  <meta name="description" content="Lead and admissions CRM for IFPI — NISM and stock market courses.">
+  <meta name="theme-color" content="#12304F">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Figtree:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div id="boot" class="boot"><div class="spinner" aria-label="Loading"></div></div>
+
+  <!-- Sign in -->
+  <section id="auth" class="auth" hidden>
+    <div class="auth-card">
+      <div class="auth-brand"><span class="logo-mark">IF</span><div><strong id="authInstitute">IFPI</strong><span id="authTagline"></span></div></div>
+      <div id="authBody"></div>
+    </div>
+    <p class="auth-foot">Lead &amp; admissions CRM</p>
+  </section>
+
+  <!-- App shell -->
+  <div id="app" class="app" hidden>
+    <aside class="sidebar" id="sidebar">
+      <div class="side-brand"><span class="logo-mark">IF</span><div><strong id="sideInstitute">IFPI</strong><span>CRM</span></div></div>
+      <nav id="nav" class="nav" aria-label="Main"></nav>
+      <div class="side-foot" id="sideFoot"></div>
+    </aside>
+    <div class="scrim" id="scrim" hidden></div>
+    <div class="main">
+      <header class="topbar">
+        <button class="icon-btn only-mobile" id="menuBtn" aria-label="Open menu"></button>
+        <h1 id="pageTitle" class="page-title"></h1>
+        <label class="global-search" for="globalSearch">
+          <span class="sr">Search leads</span>
+          <span id="searchIcon"></span>
+          <input id="globalSearch" type="search" placeholder="Search name or phone" autocomplete="off">
+          <div class="search-results" id="searchResults" hidden></div>
+        </label>
+        <button class="btn primary" id="newLeadBtn"><span id="plusIcon"></span><span class="hide-sm">New lead</span></button>
+      </header>
+      <div id="demoBanner" class="demo-banner" hidden></div>
+      <main id="view" class="view" tabindex="-1"></main>
+    </div>
+  </div>
+
+  <div id="drawerWrap" class="drawer-wrap" hidden>
+    <div class="drawer-scrim" data-close-drawer></div>
+    <div id="drawer" class="drawer" role="dialog" aria-modal="true">
+      <div id="drawerBody"></div>
+    </div>
+  </div>
+  <div id="modalWrap" class="modal-wrap" hidden>
+    <div class="modal" role="dialog" aria-modal="true"><div id="modalBody"></div></div>
+  </div>
+  <div id="toasts" class="toasts" aria-live="polite"></div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
