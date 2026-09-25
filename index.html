@@ -1,0 +1,866 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IFPI — Institute of Financial Planning & Investment, New Delhi | NISM, Technical Analysis & Market Courses</title>
+<meta name="description" content="Learn financial markets with structure — NISM exam preparation, Technical Analysis, Options & Derivatives, Financial Planning and more. Live online and classroom batches in New Delhi, taught by a 21-year BFSI practitioner.">
+<meta property="og:title" content="IFPI — Learn the markets properly, not from tips">
+<meta property="og:description" content="NISM preparation, Technical Analysis, Options & Derivatives and Financial Planning. Online & classroom batches in New Delhi.">
+<meta name="theme-color" content="#0A1733">
+<link rel="icon" href="https://ifpi.in/ifpi-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0A1733; --ink-2:#12244C; --ink-3:#1C3263;
+  --paper:#F6F4EE; --paper-2:#EEEBE2; --card:#FFFFFF; --line:#E3DFD4; --line-dark:rgba(255,255,255,.12);
+  --text:#101828; --muted:#5A6377; --muted-light:#A9B3C9;
+  --green:#0F9D6B; --green-deep:#0A7A52; --green-soft:#E3F4EC;
+  --gold:#E8B545; --red:#D64B3F;
+  --radius:18px; --radius-sm:12px;
+  --shadow:0 1px 2px rgba(10,23,51,.06),0 12px 32px -12px rgba(10,23,51,.18);
+  --display:"Fraunces",Georgia,serif; --body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
+  --wrap:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;font-family:var(--body);color:var(--text);background:var(--paper);font-size:16.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:600;letter-spacing:-.02em;line-height:1.08;margin:0}
+h2{font-size:clamp(2rem,4vw,3.1rem)}
+h3{font-size:1.3rem;letter-spacing:-.01em}
+p{margin:0}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 20px}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green-deep);display:inline-flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:22px;height:2px;background:currentColor}
+.dark .eyebrow{color:#5FD3A5}
+em.hl{font-style:italic;color:var(--green)}
+.dark em.hl{color:#5FD3A5}
+section{padding:96px 0}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-bottom:44px;flex-wrap:wrap}
+.sec-head p{max-width:460px;color:var(--muted)}
+.dark{background:var(--ink);color:#fff}
+.dark .sec-head p,.dark .muted{color:var(--muted-light)}
+.muted{color:var(--muted)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:700 .98rem var(--body);padding:15px 24px;border-radius:999px;border:1.5px solid transparent;text-decoration:none;cursor:pointer;transition:transform .15s,background .2s,box-shadow .2s;white-space:nowrap}
+.btn:hover{transform:translateY(-1px)}
+.btn-green{background:var(--green);color:#fff;box-shadow:0 8px 20px -8px rgba(15,157,107,.7)}
+.btn-green:hover{background:var(--green-deep)}
+.btn-ghost{border-color:rgba(255,255,255,.28);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.08)}
+.btn-line{border-color:var(--ink);color:var(--ink)}
+.btn-line:hover{background:var(--ink);color:#fff}
+.btn svg{width:18px;height:18px;flex:none}
+
+/* ticker */
+.ticker{background:var(--green-deep);color:#EAFBF3;font-family:var(--mono);font-size:.76rem;letter-spacing:.06em;overflow:hidden;white-space:nowrap}
+.ticker-track{display:inline-flex;gap:48px;padding:9px 0;animation:tick 40s linear infinite}
+.ticker span{display:inline-flex;align-items:center;gap:10px}
+.ticker span::before{content:"▲";color:#9BF0CB;font-size:.6rem}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(10,23,51,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line-dark)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;gap:24px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff}
+.brand img{width:44px;height:44px;border-radius:50%;background:#fff;padding:3px}
+.brand b{font-family:var(--display);font-size:1.45rem;letter-spacing:.01em;display:block;line-height:1}
+.brand small{white-space:nowrap;display:block;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-light);margin-top:4px}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{color:#D5DBEA;text-decoration:none;font-weight:600;font-size:.93rem;white-space:nowrap}
+.nav-links a:hover{color:#fff}
+.nav-cta{display:flex;gap:10px;align-items:center}
+.nav-cta .phone{color:#fff;text-decoration:none;font-weight:700;font-size:.92rem;display:flex;gap:8px;align-items:center;white-space:nowrap}
+@media (max-width:1240px){.nav-cta .phone{display:none}}
+.nav-cta .btn{padding:11px 18px;font-size:.9rem}
+.menu-btn{display:none;background:none;border:0;color:#fff;padding:8px;cursor:pointer}
+.menu-btn svg{width:26px;height:26px}
+
+/* hero */
+.hero{position:relative;background:radial-gradient(1200px 500px at 80% -10%,#1C3A7A 0%,transparent 60%),var(--ink);color:#fff;overflow:hidden;padding:80px 0 0}
+.hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:start}
+.hero h1{font-size:clamp(2.6rem,5.6vw,4.6rem);margin:22px 0 22px;font-weight:600}
+.hero .lead{font-size:1.14rem;color:#C6CEE0;max-width:560px}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin:32px 0 30px}
+.checks{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.checks li{display:flex;gap:12px;align-items:flex-start;color:#DCE2EF;font-weight:500}
+.checks li::before{content:"";flex:none;width:22px;height:22px;border-radius:50%;background:rgba(95,211,165,.16) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235FD3A5' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E") center/13px no-repeat;margin-top:2px}
+.chart{position:relative;z-index:1;margin-top:56px;height:210px}
+.chart svg{width:100%;height:100%;display:block}
+.chart .draw{stroke-dasharray:1600;stroke-dashoffset:1600;animation:draw 2.6s .3s ease-out forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.chart .c{opacity:0;animation:rise .5s ease-out forwards}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.tag{font:500 11px var(--mono);letter-spacing:.08em}
+
+/* form card */
+.form-card{background:var(--card);color:var(--text);border-radius:22px;padding:30px;box-shadow:0 30px 60px -20px rgba(0,0,0,.55);position:relative}
+.form-card h3{font-size:1.55rem}
+.form-card .sub{color:var(--muted);font-size:.93rem;margin:8px 0 20px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field.full{grid-column:1/-1}
+.field label{font-size:.78rem;font-weight:700;color:#344054}
+.field input,.field select{font:500 .95rem var(--body);padding:12px 13px;border:1.5px solid var(--line);border-radius:11px;background:#FBFAF7;color:var(--text);width:100%;min-width:0}
+.field input:focus,.field select:focus{outline:none;border-color:var(--green);background:#fff;box-shadow:0 0 0 4px var(--green-soft)}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:.82rem;color:var(--muted);margin:14px 0 16px}
+.consent input{margin-top:3px;accent-color:var(--green);width:16px;height:16px;flex:none}
+.form-card .btn{width:100%}
+.form-note{font-size:.76rem;color:var(--muted);text-align:center;margin-top:12px}
+.form-err{color:var(--red);font-size:.85rem;font-weight:600;margin-top:10px}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.success{text-align:center;padding:30px 6px}
+.success .tick{width:64px;height:64px;border-radius:50%;background:var(--green-soft);color:var(--green);display:grid;place-items:center;margin:0 auto 18px;font-size:30px;font-weight:800}
+.success p{color:var(--muted);margin:10px 0 22px}
+
+/* stats */
+.stats{background:var(--ink-2);color:#fff;border-top:1px solid var(--line-dark)}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:30px 24px;border-left:1px solid var(--line-dark)}
+.stat:first-child{border-left:0;padding-left:0}
+.stat b{font-family:var(--display);font-size:2.4rem;font-weight:600;display:block;line-height:1}
+.stat span{color:var(--muted-light);font-size:.9rem;margin-top:8px;display:block}
+
+/* goal finder */
+.finder{display:grid;grid-template-columns:.85fr 1.15fr;gap:28px;align-items:stretch}
+.goals{display:grid;gap:10px}
+.goal{display:flex;align-items:center;gap:14px;text-align:left;background:var(--card);border:1.5px solid var(--line);border-radius:var(--radius-sm);padding:16px 18px;font:700 1rem var(--body);color:var(--text);cursor:pointer;transition:border-color .2s,transform .15s}
+.goal:hover{border-color:#BFC6D4}
+.goal[aria-selected=true]{border-color:var(--ink);background:var(--ink);color:#fff}
+.goal .ico{width:38px;height:38px;border-radius:10px;background:var(--paper-2);display:grid;place-items:center;flex:none;font-size:1.1rem}
+.goal[aria-selected=true] .ico{background:rgba(255,255,255,.12)}
+.goal .arrow{margin-left:auto;opacity:.35}
+.rec{background:var(--card);border:1.5px solid var(--line);border-radius:var(--radius);padding:36px;display:flex;flex-direction:column;box-shadow:var(--shadow)}
+.rec .pill{align-self:flex-start;font:500 .72rem var(--mono);letter-spacing:.1em;text-transform:uppercase;background:var(--green-soft);color:var(--green-deep);padding:6px 11px;border-radius:999px}
+.rec h3{font-size:2rem;margin:16px 0 12px}
+.rec p{color:var(--muted)}
+.rec ul{margin:20px 0 26px;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px 20px}
+.rec li{font-size:.93rem;font-weight:600;display:flex;gap:9px}
+.rec li::before{content:"→";color:var(--green)}
+.meta{display:flex;gap:26px;flex-wrap:wrap;padding-top:20px;border-top:1px solid var(--line);margin-top:auto}
+.meta div{font-size:.78rem;color:var(--muted)}
+.meta b{display:block;color:var(--text);font-size:.95rem}
+.rec .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+
+/* featured */
+.feat{display:grid;grid-template-columns:repeat(6,1fr);gap:18px}
+.fcard{grid-column:span 2;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s;position:relative;overflow:hidden}
+.fcard:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.fcard.big{grid-column:span 3}
+.fcard.flag{background:var(--ink);color:#fff;border-color:var(--ink)}
+.fcard.flag p{color:var(--muted-light)}
+.fcard .kind{font:500 .7rem var(--mono);letter-spacing:.12em;color:var(--green-deep);text-transform:uppercase}
+.fcard.flag .kind{color:#5FD3A5}
+.fcard h3{margin:14px 0 10px;font-size:1.45rem}
+.fcard p{color:var(--muted);font-size:.95rem}
+.fcard .foot{margin-top:auto;padding-top:22px;display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:.82rem;color:var(--muted)}
+.fcard.flag .foot{color:var(--muted-light)}
+.fcard .go{white-space:nowrap;font-weight:800;color:var(--green-deep);text-decoration:none;background:none;border:0;font:800 .9rem var(--body);cursor:pointer;padding:0}
+.fcard.flag .go{color:#5FD3A5}
+.fcard .spark{position:absolute;right:-10px;top:18px;width:170px;opacity:.9}
+
+/* catalogue */
+.cat-bar{display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:26px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap}
+.tab{border:1.5px solid var(--line);background:var(--card);border-radius:999px;padding:9px 16px;font:700 .88rem var(--body);cursor:pointer;color:var(--text)}
+.tab[aria-selected=true]{background:var(--ink);border-color:var(--ink);color:#fff}
+.tab .n{opacity:.55;margin-left:6px;font-weight:600}
+.search{position:relative;min-width:260px}
+.search input{width:100%;font:500 .95rem var(--body);padding:12px 14px 12px 42px;border:1.5px solid var(--line);border-radius:999px;background:var(--card)}
+.search input:focus{outline:none;border-color:var(--ink)}
+.search svg{position:absolute;left:15px;top:50%;transform:translateY(-50%);width:17px;color:var(--muted)}
+.cat-desc{color:var(--muted);margin-bottom:18px;min-height:1.6em}
+.chips{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.chip{display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-weight:600;font-size:.95rem;cursor:pointer;text-align:left;font-family:var(--body);color:var(--text);transition:border-color .15s}
+.chip:hover{border-color:var(--green)}
+.chip small{font:500 .66rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.chip .plus{color:var(--green);font-weight:800}
+.empty{color:var(--muted);padding:20px 0}
+
+/* NISM */
+.nism{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:start}
+.nism .note{margin-top:26px;padding:18px;border:1px solid var(--line-dark);border-radius:14px;font-size:.86rem;color:var(--muted-light);background:rgba(255,255,255,.03)}
+.mods{border:1px solid var(--line-dark);border-radius:var(--radius);overflow:hidden;background:rgba(255,255,255,.02)}
+.mods-top{display:flex;gap:10px;padding:14px;border-bottom:1px solid var(--line-dark);flex-wrap:wrap}
+.mods-top input{flex:1;min-width:180px;background:rgba(255,255,255,.06);border:1px solid var(--line-dark);border-radius:10px;padding:11px 13px;color:#fff;font:500 .92rem var(--body)}
+.mods-top input::placeholder{color:#8A96B3}
+.mods-top input:focus{outline:none;border-color:#5FD3A5}
+.rolef{display:flex;gap:6px;flex-wrap:wrap}
+.rolef button{background:transparent;border:1px solid var(--line-dark);color:#C6CEE0;border-radius:999px;padding:8px 12px;font:600 .8rem var(--body);cursor:pointer}
+.rolef button[aria-pressed=true]{background:#5FD3A5;color:var(--ink);border-color:#5FD3A5}
+.mod-list{max-height:520px;overflow:auto}
+.mod{display:grid;grid-template-columns:86px 1fr auto;gap:16px;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line-dark)}
+.mod:last-child{border-bottom:0}
+.mod .code{font:500 .78rem var(--mono);color:#5FD3A5}
+.mod b{font-weight:700;display:block;font-size:.97rem}
+.mod span{font-size:.82rem;color:var(--muted-light)}
+.mod button{background:none;border:1px solid var(--line-dark);color:#fff;border-radius:999px;padding:7px 13px;font:700 .78rem var(--body);cursor:pointer;white-space:nowrap}
+.mod button:hover{background:#fff;color:var(--ink)}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0;counter-reset:s;position:relative}
+.step{padding:0 18px 0 0;position:relative}
+.step .num{font:500 .8rem var(--mono);color:var(--green-deep);display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.step .num::after{content:"";flex:1;height:1px;background:var(--line)}
+.step:last-child .num::after{display:none}
+.step .dot{width:44px;height:44px;border-radius:50%;background:var(--card);border:1.5px solid var(--line);display:grid;place-items:center;font-size:1.15rem;flex:none}
+.step h3{font-size:1.15rem;margin-bottom:8px}
+.step p{color:var(--muted);font-size:.93rem}
+
+/* why */
+.why{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:60px}
+.why div{border-top:2px solid var(--ink);padding-top:18px}
+.why h3{font-size:1.12rem;margin-bottom:8px}
+.why p{color:var(--muted);font-size:.93rem}
+
+/* faculty */
+.fac{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:center}
+.fac-photo{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:4/5;background:var(--paper-2)}
+.fac-photo img{width:100%;height:100%;object-fit:cover}
+.fac-photo .badge{position:absolute;left:18px;bottom:18px;right:18px;background:rgba(10,23,51,.88);backdrop-filter:blur(8px);color:#fff;border-radius:14px;padding:14px 16px;display:flex;align-items:center;gap:14px}
+.fac-photo .badge b{font-family:var(--display);font-size:2rem;line-height:1}
+.fac-photo .badge span{font-size:.84rem;color:var(--muted-light)}
+.fac h2{margin:18px 0 6px}
+.fac .role{font:500 .8rem var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.fac .bio{margin:22px 0;font-size:1.05rem;color:#344054}
+.creds{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.creds li{display:flex;gap:12px;padding:14px 16px;background:var(--card);border:1px solid var(--line);border-radius:12px;font-weight:600;font-size:.93rem}
+.creds li::before{content:"✦";color:var(--gold)}
+
+/* testimonials */
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.quote{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px;display:flex;flex-direction:column;gap:20px}
+.quote .stars{color:var(--gold);letter-spacing:3px}
+.quote blockquote{margin:0;font-family:var(--display);font-size:1.15rem;line-height:1.45;font-weight:500}
+.quote .who{display:flex;gap:12px;align-items:center;margin-top:auto}
+.quote .av{width:42px;height:42px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:800;font-size:.85rem}
+.quote .who b{display:block;font-size:.95rem}
+.quote .who span{font-size:.82rem;color:var(--muted)}
+
+/* faq */
+.faq-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:56px}
+details{border-bottom:1px solid var(--line);padding:4px 0}
+summary{list-style:none;cursor:pointer;padding:20px 40px 20px 0;font-weight:700;font-size:1.08rem;position:relative}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:4px;top:50%;transform:translateY(-50%);width:28px;height:28px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;font-weight:600;color:var(--muted);transition:transform .2s}
+details[open] summary::after{content:"–";background:var(--ink);color:#fff;border-color:var(--ink)}
+details p{color:var(--muted);padding:0 40px 22px 0}
+
+/* cta + contact */
+.cta{background:var(--green-deep);color:#fff;border-radius:28px;padding:56px;display:grid;grid-template-columns:1.3fr .7fr;gap:32px;align-items:center;position:relative;overflow:hidden}
+.cta h2{font-size:clamp(2rem,3.6vw,2.8rem)}
+.cta p{color:#D2F2E4;margin-top:14px;max-width:520px}
+.cta .actions{display:flex;flex-direction:column;gap:12px}
+.cta .btn-white{background:#fff;color:var(--ink)}
+.contact{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}
+.ccard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+.ccard .k{font:500 .72rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.ccard a{text-decoration:none;font-weight:700;display:block}
+.ccard a:hover{color:var(--green-deep)}
+.ccard p{font-size:.95rem;color:#344054}
+.ccard .link{margin-top:12px;color:var(--green-deep);font-size:.9rem}
+
+/* footer */
+footer{background:var(--ink);color:#C6CEE0;padding:70px 0 110px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:36px}
+footer h4{font:500 .74rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#fff;margin:0 0 16px}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:10px;font-size:.93rem}
+footer a{text-decoration:none;color:#C6CEE0;font-size:.93rem}
+footer a:hover{color:#fff}
+.disclaimer{border-top:1px solid var(--line-dark);margin-top:48px;padding-top:24px;font-size:.8rem;color:#8A96B3;line-height:1.7}
+
+/* floating */
+.wa-float{position:fixed;right:22px;bottom:22px;z-index:60;width:58px;height:58px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 12px 28px -8px rgba(0,0,0,.4);transition:transform .2s}
+.wa-float:hover{transform:scale(1.06)}
+.wa-float svg{width:30px;height:30px;fill:#fff}
+.mbar{display:none}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}.chart .draw{stroke-dashoffset:0}.chart .c{opacity:1}}
+
+/* responsive */
+@media (max-width:1040px){
+  .nav-links,.nav-cta .phone{display:none}
+  .menu-btn{display:block}
+  .hero .wrap,.finder,.nism,.fac,.faq-grid,.cta{grid-template-columns:1fr}
+  .feat .fcard,.feat .fcard.big{grid-column:span 3}
+  .steps{grid-template-columns:1fr 1fr;gap:34px}
+  .why{grid-template-columns:1fr 1fr}
+  .quotes{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .fac-photo{max-width:420px}
+}
+@media (max-width:720px){
+  body{font-size:16px}
+  section{padding:68px 0}
+  .wrap{padding:0 16px}
+  .hero{padding-top:48px}
+  .form-card{padding:22px}
+  .form-grid{grid-template-columns:1fr}
+  .stats .wrap{grid-template-columns:1fr 1fr}
+  .stat{padding:22px 14px;border-left:0;border-top:1px solid var(--line-dark)}
+  .stat:first-child{padding-left:14px}
+  .stat b{font-size:1.9rem}
+  .feat .fcard,.feat .fcard.big{grid-column:1/-1}
+  .rec{padding:24px}.rec h3{font-size:1.6rem}.rec ul{grid-template-columns:1fr}
+  .steps,.why,.contact{grid-template-columns:1fr}
+  .mod{grid-template-columns:1fr auto;gap:6px 12px}
+  .mod .code{grid-column:1/-1}
+  .cta{padding:32px 22px}
+  .foot-grid{grid-template-columns:1fr}
+  .search{min-width:0;width:100%}
+  .nav-cta .btn{display:none}
+  .wa-float{display:none}
+  .mbar{display:grid;grid-template-columns:1fr 1fr 1.3fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:60;background:#fff;padding:10px 12px calc(10px + env(safe-area-inset-bottom));border-top:1px solid var(--line);box-shadow:0 -8px 24px -12px rgba(10,23,51,.25)}
+  .mbar a{display:flex;align-items:center;justify-content:center;gap:7px;padding:12px 8px;border-radius:12px;font-weight:800;font-size:.88rem;text-decoration:none;border:1.5px solid var(--line);color:var(--ink)}
+  .mbar a.pri{background:var(--green);border-color:var(--green);color:#fff}
+  .mbar svg{width:17px;height:17px}
+}
+/* mobile menu */
+.mnav{display:none;position:fixed;inset:72px 0 0 0;background:var(--ink);z-index:49;padding:24px 20px;flex-direction:column;gap:6px}
+.mnav.open{display:flex}
+.mnav a{color:#fff;text-decoration:none;font-family:var(--display);font-size:1.7rem;padding:10px 0;border-bottom:1px solid var(--line-dark)}
+.mnav .btn{margin-top:18px;font-family:var(--body);font-size:1rem;border:0}
+</style>
+</head>
+<body>
+
+<div class="ticker" aria-hidden="true"><div class="ticker-track" id="ticker"></div></div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="IFPI home">
+      <img src="https://ifpi.in/ifpi-logo.png" alt="" width="44" height="44">
+      <span><b>IFPI</b><small>Financial Planning &amp; Investment</small></span>
+    </a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="#start">Find your course</a>
+      <a href="#programmes">Programmes</a>
+      <a href="#nism">NISM</a>
+      <a href="#faculty">Faculty</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="phone" href="tel:+919911610328"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>+91 99116 10328</a>
+      <a class="btn btn-green" href="#enquire">Free counselling</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+</header>
+<nav class="mnav" id="mnav" aria-label="Mobile">
+  <a href="#start">Find your course</a><a href="#programmes">Programmes</a><a href="#nism">NISM preparation</a><a href="#faculty">Faculty</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
+  <a class="btn btn-green" href="#enquire">Book free counselling</a>
+</nav>
+
+<main id="top">
+<!-- HERO -->
+<section class="hero dark" style="padding-bottom:0">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Institute of Financial Planning &amp; Investment · New Delhi</span>
+      <h1>Learn the markets properly. <em class="hl">Not&nbsp;from&nbsp;tips.</em></h1>
+      <p class="lead">NISM exam preparation, technical analysis, options and financial planning — taught chapter by chapter by a practitioner with 21+ years inside India's leading broking firms.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-green" href="#enquire">Book a free counselling call
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-ghost" href="#start">Which course is right for me?</a>
+      </div>
+      <ul class="checks">
+        <li>Live classes + recordings, notes and mock tests</li>
+        <li>Online from anywhere, or in the classroom near Dwarka Mor Metro</li>
+        <li>Classes till 9pm — built around college and work</li>
+      </ul>
+    </div>
+
+    <div class="form-card" id="enquire">
+      <div id="formWrap">
+        <h3>Get the free course brochure</h3>
+        <p class="sub">Tell us a little about you. A counsellor will call back and recommend the right programme — no pressure.</p>
+        <form id="leadForm" novalidate>
+          <div class="form-grid">
+            <div class="field"><label for="f-name">Full name *</label><input id="f-name" name="name" autocomplete="name" required placeholder="Your name"></div>
+            <div class="field"><label for="f-phone">Mobile (WhatsApp) *</label><input id="f-phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel" required placeholder="10-digit number"></div>
+            <div class="field full"><label for="f-prog">What do you want to learn?</label>
+              <select id="f-prog" name="programme"></select></div>
+            <div class="field"><label for="f-who">I am a…</label>
+              <select id="f-who" name="status"><option value="">Select</option><option>Student</option><option>Working Professional</option><option>Existing Investor / Trader</option><option>Other</option></select></div>
+            <div class="field"><label for="f-mode">Preferred mode</label>
+              <select id="f-mode" name="mode"><option value="">Select</option><option>Online</option><option>Classroom (New Delhi)</option><option>Either</option></select></div>
+            <div class="field"><label for="f-city">City</label><input id="f-city" name="city" autocomplete="address-level2" placeholder="e.g. Delhi"></div>
+            <div class="field"><label for="f-src">Heard about us on</label>
+              <select id="f-src" name="source"><option value="">Select</option><option>Google Search</option><option>Instagram</option><option>Facebook</option><option>YouTube</option><option>Referral</option><option>WhatsApp</option><option>Other</option></select></div>
+          </div>
+          <div class="hp" aria-hidden="true"><label>Leave blank<input name="website" tabindex="-1" autocomplete="off"></label></div>
+          <label class="consent"><input type="checkbox" name="consent" checked> I agree to be contacted by IFPI on call and WhatsApp about programmes and batches.</label>
+          <button class="btn btn-green" type="submit" id="submitBtn">Send me the brochure</button>
+          <div class="form-err" id="formErr" hidden></div>
+          <p class="form-note">We respect your privacy. Your details are used only to contact you about IFPI programmes.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="chart" aria-hidden="true">
+    <svg viewBox="0 0 1440 210" preserveAspectRatio="none" id="chartSvg"></svg>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="wrap">
+    <div class="stat"><b data-count="21" data-suffix="+">21+</b><span>years of BFSI experience behind the teaching</span></div>
+    <div class="stat"><b data-count="19">19</b><span>NISM certification modules covered</span></div>
+    <div class="stat"><b data-count="55" data-suffix="+">55+</b><span>programmes, from basics to CFP® prep</span></div>
+    <div class="stat"><b>2</b><span>ways to learn — live online or in our Delhi classroom</span></div>
+  </div>
+</div>
+
+<!-- GOAL FINDER -->
+<section id="start">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div><span class="eyebrow">Start here</span><h2 style="margin-top:14px">What do you want <em class="hl">to achieve?</em></h2></div>
+      <p>Pick your goal and we'll show you the best place to begin. Still unsure? A 15-minute counselling call settles it.</p>
+    </div>
+    <div class="finder reveal">
+      <div class="goals" role="tablist" id="goals"></div>
+      <div class="rec" id="rec" role="tabpanel" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED -->
+<section id="programmes" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div><span class="eyebrow">Featured programmes</span><h2 style="margin-top:14px">Five ways in. <em class="hl">One method.</em></h2></div>
+      <p>Every programme follows the same structure — concepts in sequence, practice, assessment and mentor support.</p>
+    </div>
+    <div class="feat" id="feat"></div>
+  </div>
+</section>
+
+<!-- CATALOGUE -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div><span class="eyebrow">Full catalogue</span><h2 style="margin-top:14px">Every programme, <em class="hl">by path.</em></h2></div>
+      <p>From first-time investor to certification candidate. Tap any programme to ask about the next batch.</p>
+    </div>
+    <div class="cat-bar reveal">
+      <div class="tabs" role="tablist" id="tabs"></div>
+      <label class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input id="catSearch" type="search" placeholder="Search programmes…" aria-label="Search programmes"></label>
+    </div>
+    <p class="cat-desc" id="catDesc"></p>
+    <div class="chips" id="chips"></div>
+  </div>
+</section>
+
+<!-- NISM -->
+<section class="dark" id="nism">
+  <div class="wrap nism">
+    <div class="reveal">
+      <span class="eyebrow">NISM preparation</span>
+      <h2 style="margin:14px 0 18px">Find the right <em class="hl">NISM module</em> for your role.</h2>
+      <p class="muted">Chapter-wise concept classes, numerical practice, exam-style questions, mock tests and doubt sessions — for 19 NISM certification modules.</p>
+      <div class="hero-ctas" style="margin:28px 0 0"><a class="btn btn-green" href="#enquire">Ask about the next NISM batch</a></div>
+      <p class="note">IFPI provides independent coaching for NISM exams. Examination registration, rules, fees, syllabus and certification are governed by NISM — please verify the latest details on the official NISM website.</p>
+    </div>
+    <div class="mods reveal">
+      <div class="mods-top">
+        <input id="modSearch" type="search" placeholder="Search e.g. mutual fund, derivatives, XV…" aria-label="Search NISM modules">
+        <div class="rolef" id="rolef"></div>
+      </div>
+      <div class="mod-list" id="modList"></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section id="how">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div><span class="eyebrow">How you learn</span><h2 style="margin-top:14px">A clear path from concepts <em class="hl">to application.</em></h2></div>
+      <p>Financial markets can't be learned through shortcuts. This is the sequence every IFPI learner follows.</p>
+    </div>
+    <div class="steps reveal">
+      <div class="step"><div class="num"><span class="dot">☎</span>01</div><h3>Counselling</h3><p>We understand your background and recommend a suitable starting point.</p></div>
+      <div class="step"><div class="num"><span class="dot">▶</span>02</div><h3>Live concept classes</h3><p>Each topic in a logical sequence, with clear, real-market examples.</p></div>
+      <div class="step"><div class="num"><span class="dot">✎</span>03</div><h3>Practice &amp; revision</h3><p>Notes, assignments, recordings and question practice where included.</p></div>
+      <div class="step"><div class="num"><span class="dot">✓</span>04</div><h3>Assessment &amp; doubts</h3><p>Mock tests or practical reviews, and clarity on your weak areas.</p></div>
+      <div class="step"><div class="num"><span class="dot">∞</span>05</div><h3>Continued learning</h3><p>Revision access and mentor / community support, per your programme.</p></div>
+    </div>
+    <div class="why reveal">
+      <div><h3>Structure over shortcuts</h3><p>Taught chapter by chapter, in order — never scattered tips or signals.</p></div>
+      <div><h3>Practitioner-led</h3><p>Real BFSI experience in the classroom, not a training script.</p></div>
+      <div><h3>Honest, no guarantees</h3><p>We teach skill and understanding. We never promise exam results, profits or returns.</p></div>
+      <div><h3>Learn your way</h3><p>Live online from anywhere, or selected batches at our New Delhi centre.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FACULTY -->
+<section id="faculty" style="background:var(--paper-2)">
+  <div class="wrap fac">
+    <div class="fac-photo reveal">
+      <img src="https://ifpi.in/pradeep-kumar-singh.jpg" alt="Pradeep Kumar Singh, Founder and Lead Faculty, IFPI" loading="lazy">
+      <div class="badge"><b>21+</b><span>years training channel partners, clients and sales teams across equity, derivatives and mutual funds</span></div>
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">Lead faculty</span>
+      <h2>Pradeep Kumar Singh</h2>
+      <p class="role">Founder &amp; Lead Faculty</p>
+      <p class="bio">Most recently Regional Training Manager (Learning &amp; Development, North Region) at HDFC Securities, with earlier roles at Angel Broking (now Angel One). After two decades of seeing people sold products but rarely taught how markets work, he built IFPI to teach it properly — clear concepts, practical examples, risk awareness and disciplined application.</p>
+      <ul class="creds">
+        <li>21+ years in BFSI — HDFC Securities, Angel Broking, Indiabulls, India Infoline and more</li>
+        <li>NISM certified: Research Analyst · Investment Adviser (X-A &amp; X-B) · Mutual Fund · PMS Distributor · Equity &amp; Commodity Derivatives</li>
+        <li>Certified in Technical Analysis · Diploma in Commodities Market (MCX &amp; Welingkar)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="reviews">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div><span class="eyebrow">Student &amp; parent feedback</span><h2 style="margin-top:14px">In their <em class="hl">own words.</em></h2></div>
+      <p>Genuine feedback from learners and parents, published with their permission.</p>
+    </div>
+    <div class="quotes reveal">
+      <figure class="quote" style="margin:0"><div class="stars" aria-label="5 out of 5">★★★★★</div>
+        <blockquote>“I always thought you needed a big salary to start investing. Pradeep sir showed me how even ₹500 from my pocket money can grow over time — I opened my first SIP that same evening with my dad's help.”</blockquote>
+        <figcaption class="who"><span class="av">IK</span><span><b>Ishaan Kulkarni</b><span>College Student, Nagpur</span></span></figcaption></figure>
+      <figure class="quote" style="margin:0"><div class="stars" aria-label="5 out of 5">★★★★★</div>
+        <blockquote>“I joined along with my son and honestly learnt as much as he did. Practical, honest, zero sales pressure — just real guidance. I only wish someone had taught me all this back at his age.”</blockquote>
+        <figcaption class="who"><span class="av">DM</span><span><b>Deepak Malhotra</b><span>Parent, Chandigarh</span></span></figcaption></figure>
+      <figure class="quote" style="margin:0"><div class="stars" aria-label="5 out of 5">★★★★★</div>
+        <blockquote>“Main engineering kar raha hoon aur sochta tha finance sirf commerce waalon ke liye hai. Is webinar ne kitne saare career options dikhaye — ab main seriously NISM aur ek finance side-career explore kar raha hoon.”</blockquote>
+        <figcaption class="who"><span class="av">RD</span><span><b>Rohan Das</b><span>College Student, Kolkata</span></span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="padding-top:0">
+  <div class="wrap faq-grid">
+    <div class="reveal"><span class="eyebrow">Questions</span><h2 style="margin:14px 0 16px">Frequently <em class="hl">asked.</em></h2><p class="muted">Anything else? Call <a href="tel:+919911610328"><b>+91 99116 10328</b></a> or message us on WhatsApp.</p></div>
+    <div class="reveal">
+      <details open><summary>Does IFPI issue NISM certificates?</summary><p>No. NISM examinations and certificates are administered by NISM. IFPI provides independent training and exam preparation for selected modules.</p></details>
+      <details><summary>Do I need prior market knowledge?</summary><p>Not for beginner programmes. Advanced technical-analysis and derivatives programmes may require basic market knowledge. A counselling call can help identify the right level.</p></details>
+      <details><summary>Are classes online or offline?</summary><p>IFPI offers live online classes and selected classroom batches in New Delhi. The available mode is stated for each course and batch.</p></details>
+      <details><summary>Can working professionals attend?</summary><p>Yes. Online batches have flexible timings with classes till 9pm, and sessions are recorded so you can revise at your own pace.</p></details>
+      <details><summary>Will I receive recordings and notes?</summary><p>Access depends on the programme. Your admission confirmation states the exact recording period, material included and support duration.</p></details>
+      <details><summary>Do you guarantee that I will pass or earn profits?</summary><p>No. IFPI provides education, practice and guidance, but does not guarantee examination results, employment, trading profit or investment returns.</p></details>
+      <details><summary>How do I enrol?</summary><p>Book a free counselling call using the form above. We'll understand your goal, recommend a programme, and share batch dates and fees.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA + CONTACT -->
+<section id="contact" style="padding-top:0">
+  <div class="wrap">
+    <div class="cta reveal">
+      <div><h2>Not sure where to start? Let's talk.</h2><p>Speak with an IFPI counsellor. We'll understand your background, explain the options and help you choose — without pressure.</p></div>
+      <div class="actions">
+        <a class="btn btn-white" href="#enquire">Book a free counselling call</a>
+        <a class="btn btn-ghost" id="ctaWa" href="#" target="_blank" rel="noopener">Chat on WhatsApp</a>
+      </div>
+    </div>
+    <div class="contact reveal">
+      <div class="ccard"><div class="k">Call us</div><a href="tel:+919911610328">+91 99116 10328</a><a href="tel:+919350137302">+91 93501 37302</a><a href="tel:+919910613552">+91 99106 13552</a><p class="muted" style="margin-top:10px">Mon–Sat, 10am–6pm</p></div>
+      <div class="ccard"><div class="k">Visit the classroom</div><p>Plot No. 69, Kh. No. 883, Sewak Park, Uttam Nagar, near Dwarka Mor Metro Station, New Delhi – 110059</p><a class="link" href="https://www.google.com/maps/search/?api=1&query=Sewak+Park+Uttam+Nagar+Dwarka+Mor+New+Delhi+110059" target="_blank" rel="noopener">Get directions →</a></div>
+      <div class="ccard"><div class="k">Write to us</div><a href="mailto:info@ifpi.in">info@ifpi.in</a><a class="link" id="cardWa" href="#" target="_blank" rel="noopener">WhatsApp us →</a></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div><a class="brand" href="#top"><img src="https://ifpi.in/ifpi-logo.png" alt="" width="44" height="44"><span><b>IFPI</b><small>Financial Planning &amp; Investment</small></span></a>
+        <p style="margin-top:18px;font-size:.93rem;max-width:320px">A financial-education institute helping students, professionals and investors learn the markets with structure and discipline.</p></div>
+      <div><h4>Explore</h4><ul><li><a href="#start">Find your course</a></li><li><a href="#programmes">Programmes</a></li><li><a href="#nism">NISM preparation</a></li><li><a href="#faculty">Faculty</a></li><li><a href="#faq">FAQ</a></li></ul></div>
+      <div><h4>Policies</h4><ul><li><a href="https://ifpi.in/terms.html">Terms &amp; Conditions</a></li><li><a href="https://ifpi.in/privacy.html">Privacy Policy</a></li><li><a href="https://ifpi.in/refund.html">Refund &amp; Cancellation</a></li><li><a href="https://ifpi.in/disclaimer.html">Disclaimer</a></li></ul></div>
+      <div><h4>Get in touch</h4><ul><li><a href="tel:+919911610328">+91 99116 10328</a></li><li><a href="mailto:info@ifpi.in">info@ifpi.in</a></li><li>Uttam Nagar, near Dwarka Mor Metro, New Delhi – 110059</li></ul></div>
+    </div>
+    <p class="disclaimer">IFPI is an independent training institute. We are not affiliated with, endorsed by, or an agent of NISM or SEBI, and NISM certification exams are conducted independently by NISM. IFPI provides financial education for learning purposes only. Nothing on this website is investment, trading or financial advice, or a recommendation to buy or sell any security, and we make no promise of exam success, profit, income, placement or guaranteed returns. Investing and trading involve risk, including possible loss of capital. Please make your own decisions or consult a SEBI-registered adviser.<br><br>© <span id="yr">2026</span> Institute of Financial Planning &amp; Investment. All rights reserved.</p>
+  </div>
+</footer>
+
+<a class="wa-float" id="waFloat" href="#" target="_blank" rel="noopener" aria-label="Chat with IFPI on WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.4zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zm0-21.5A11.7 11.7 0 0 0 1.9 17.9L.2 24l6.3-1.6A11.7 11.7 0 1 0 12 .3z"/></svg></a>
+
+<div class="mbar">
+  <a href="tel:+919911610328"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Call</a>
+  <a id="mbarWa" href="#" target="_blank" rel="noopener">WhatsApp</a>
+  <a class="pri" href="#enquire">Enquire now</a>
+</div>
+
+<script>
+/* ============================================================
+   SETTINGS — the only part you may need to edit.
+   Paste the same Supabase values used in the IFPI CRM (js/config.js)
+   and every enquiry from this form lands in the CRM as a new lead.
+   Until then, the form opens WhatsApp with the details filled in.
+   ============================================================ */
+const SITE = {
+  CRM_SUPABASE_URL: "",   // e.g. "https://abcdxyz.supabase.co"
+  CRM_ANON_KEY: "",       // the "anon public" key
+  WHATSAPP: "919910613552",
+};
+</script>
+<script>
+(() => {
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const wa = text => `https://wa.me/${SITE.WHATSAPP}?text=${encodeURIComponent(text)}`;
+const waHello = wa("Hi IFPI, I'd like to know about your courses and upcoming batches.");
+["#waFloat","#ctaWa","#cardWa","#mbarWa"].forEach(id => $(id).href = waHello);
+$("#yr").textContent = new Date().getFullYear();
+
+/* ticker */
+const tick = ["Admissions open — online & classroom batches","NISM exam preparation · 19 modules","Technical Analysis Masterclass","Options & Derivatives Programme","Classes till 9pm","Near Dwarka Mor Metro, New Delhi","Free counselling call — no pressure"];
+$("#ticker").innerHTML = [...tick, ...tick].map(t => `<span>${esc(t)}</span>`).join("");
+
+/* mobile menu */
+const mb = $("#menuBtn"), mn = $("#mnav");
+mb.addEventListener("click", () => { const o = mn.classList.toggle("open"); mb.setAttribute("aria-expanded", o); document.body.style.overflow = o ? "hidden" : ""; });
+mn.addEventListener("click", e => { if (e.target.closest("a")) { mn.classList.remove("open"); mb.setAttribute("aria-expanded", false); document.body.style.overflow = ""; } });
+
+/* ---------------- data ---------------- */
+const PROGRAMMES = [
+  { id:"nism", code:"", name:"NISM Certification Preparation", kind:"Certification", level:"By module", mode:"Online & classroom",
+    desc:"Concept-focused preparation for NISM certification exams — chapter-wise teaching, numerical practice, mock tests and doubt support.",
+    learn:["Chapter-wise concept classes","Numerical practice","Exam-style questions","Mock tests & doubt sessions"] },
+  { id:"ta", code:"TA", name:"Technical Analysis Masterclass", kind:"Flagship", level:"Beginner–Intermediate", mode:"Online & classroom",
+    desc:"Learn to read price charts and market structure with a clear, rules-based method — so you form your own view instead of following tips.",
+    learn:["Trends, phases & timeframes","Candlesticks & chart patterns","Support, resistance & key zones","RSI, MACD, moving averages & volume","Risk, position sizing & stop-losses","A tested, rules-based trading plan"] },
+  { id:"opt", code:"OPT", name:"Options & Derivatives Programme", kind:"Advanced", level:"Intermediate", mode:"Online & classroom",
+    desc:"Futures, options, payoff structures, Greeks, hedging, strategies, position sizing and risk.",
+    learn:["Futures & options basics","Payoff structures","The Greeks","Hedging & strategies","Position sizing","Risk management"] },
+  { id:"fpi", code:"FPI", name:"Financial Planning & Investment", kind:"Planning", level:"All levels", mode:"Online & classroom",
+    desc:"Goal setting, cash-flow planning, insurance, taxation basics, asset allocation, mutual funds, retirement and portfolio review.",
+    learn:["Goal setting & cash flow","Insurance & tax basics","Asset allocation","Mutual funds","Retirement planning","Portfolio review"] },
+  { id:"flf", code:"FLF", name:"Financial Literacy Foundation", kind:"Foundations", level:"Beginner", mode:"Online",
+    desc:"A beginner-friendly introduction to saving, investing, securities markets, mutual funds, risk and fraud awareness.",
+    learn:["Saving & budgeting","How investing works","Securities markets","Mutual funds","Risk basics","Fraud awareness"] },
+];
+const GOALS = [
+  { ico:"🎓", label:"Clear a NISM exam", prog:"nism", why:"Best for students and BFSI professionals who need a NISM certificate for their role." },
+  { ico:"📈", label:"Learn to trade with a method", prog:"ta", why:"Our flagship. Best if you know the basics and want a disciplined, rules-based process." },
+  { ico:"⚖️", label:"Understand options & F&O", prog:"opt", why:"Best if you already read charts and want to add derivatives — with risk front and centre." },
+  { ico:"🧭", label:"Plan and grow my money", prog:"fpi", why:"Best for anyone who wants a long-term plan — goals, tax basics, funds and retirement." },
+  { ico:"🌱", label:"Start from zero", prog:"flf", why:"Best for complete beginners, students and parents. No market knowledge needed." },
+];
+const CATALOGUE = [
+  { k:"Foundation", d:"Start here — build the core understanding of money, markets and the financial system.",
+    items:["Financial Literacy","Personal Finance","Basics of Economics","Banking & Financial System","Securities Markets Foundation","Stock Market Basics"] },
+  { k:"Investment", d:"Learn to invest with method — analysis, styles and portfolio thinking.",
+    items:["Equity Investing","Fundamental Analysis","Value Investing","Growth Investing","Dividend Investing","Portfolio Investing"] },
+  { k:"Trading", d:"Read the markets and trade with discipline across timeframes and instruments.",
+    items:["Technical Analysis","Price Action Trading","Swing Trading","Intraday Trading","Positional Trading","Options Trading","Futures Trading","Commodity Trading","Currency Trading"] },
+  { k:"Wealth Management", d:"Plan and manage money for the long term — from funds to full financial planning.",
+    items:["Mutual Funds","Exchange Traded Funds (ETF)","Portfolio Management","Asset Allocation","Retirement Planning","Financial Planning","Wealth Management","Estate Planning","Tax Planning"] },
+  { k:"Research & Advisory", d:"Go deeper — research, valuation, modelling and advisory skills.",
+    items:["Equity Research","Investment Advisory","Financial Modelling","Company Valuation","Behavioural Finance","Fixed Income Securities","Alternative Investments (AIF, REITs, InvITs)"] },
+  { k:"Certifications", d:"Structured preparation for professional certifications — concept classes, practice questions and mock tests.",
+    items:["NISM Certification Programs","CFP® (Certified Financial Planner) Preparation"] },
+];
+const ROLES = { dist:"Distributors", deriv:"Derivatives", adv:"Advisers & research", ops:"Operations & compliance", fnd:"Foundation" };
+const NISM = [
+  ["I","Currency Derivatives","deriv","Dealers and staff in currency F&O"],
+  ["II-A","Registrar & Transfer Agents (Corporate)","ops","RTA staff handling corporate records"],
+  ["II-B","Registrar & Transfer Agents (Mutual Fund)","ops","RTA staff servicing mutual fund investors"],
+  ["III-A","Securities Intermediaries Compliance","ops","Compliance officers at intermediaries"],
+  ["IV","Interest Rate Derivatives","deriv","Dealers in interest rate futures"],
+  ["V-A","Mutual Fund Distributors","dist","Anyone distributing mutual funds"],
+  ["VI","Depository Operations","ops","DP operations staff"],
+  ["VII","Securities Operations & Risk Management (SORM)","ops","Back-office and risk teams at brokers"],
+  ["VIII","Equity Derivatives","deriv","Equity F&O dealers and traders"],
+  ["X-A","Investment Adviser Level 1","adv","Aspiring registered investment advisers"],
+  ["X-B","Investment Adviser Level 2","adv","Investment advisers — second level"],
+  ["XII","Securities Markets Foundation","fnd","Beginners and students entering BFSI"],
+  ["XIII","Common Derivatives","deriv","Dealers across equity, currency and IRF"],
+  ["XV","Research Analyst","adv","Aspiring research analysts"],
+  ["XVI","Commodity Derivatives","deriv","Commodity market dealers"],
+  ["XVII","Retirement Adviser","adv","Advisers focused on retirement planning"],
+  ["XIX-A","Alternative Investment Fund Managers","adv","AIF investment team members"],
+  ["XXI-A","Portfolio Managers Distributors","dist","Distributors of PMS products"],
+  ["XXI-B","Portfolio Managers","adv","Portfolio management professionals"],
+];
+const byId = id => PROGRAMMES.find(p => p.id === id);
+
+/* form programme select */
+const FORM_OPTS = [["","Not sure — please advise"],["NISM Certification Preparation"],["Technical Analysis Masterclass"],["Options & Derivatives"],["Financial Planning & Investment"],["Financial Literacy Foundation"],["Algo Trading"],["Forex Trading"],["Crypto Trading"],["CFP® Preparation"]];
+const sel = $("#f-prog");
+function setProgramme(label) {
+  if (![...sel.options].some(o => o.value === label)) sel.add(new Option(label, label), sel.options[1]);
+  sel.value = label;
+}
+FORM_OPTS.forEach(([v, l]) => sel.add(new Option(l || v, v)));
+function enquire(label) {
+  if ($("#leadForm")) setProgramme(label);
+  $("#enquire").scrollIntoView({ behavior: "smooth", block: "center" });
+  setTimeout(() => $("#f-name")?.focus({ preventScroll: true }), 600);
+}
+document.addEventListener("click", e => { const b = e.target.closest("[data-enquire]"); if (b) { e.preventDefault(); enquire(b.dataset.enquire); } });
+
+/* goal finder */
+const goalsEl = $("#goals");
+goalsEl.innerHTML = GOALS.map((g, i) => `<button class="goal" role="tab" aria-selected="${i === 0}" data-i="${i}"><span class="ico">${g.ico}</span>${esc(g.label)}<span class="arrow">→</span></button>`).join("");
+function showGoal(i) {
+  const g = GOALS[i], p = byId(g.prog);
+  $$(".goal").forEach(b => b.setAttribute("aria-selected", b.dataset.i == i));
+  const label = p.id === "nism" ? "NISM Certification Preparation" : p.id === "opt" ? "Options & Derivatives" : p.name;
+  $("#rec").innerHTML = `<span class="pill">Recommended · ${esc(p.kind)}</span><h3>${esc(p.name)}</h3><p>${esc(p.desc)}</p>
+    <ul>${p.learn.map(l => `<li>${esc(l)}</li>`).join("")}</ul>
+    <div class="meta"><div>Level<b>${esc(p.level)}</b></div><div>Mode<b>${esc(p.mode)}</b></div><div>Why this<b style="font-weight:600;max-width:320px">${esc(g.why)}</b></div></div>
+    <div class="actions"><button class="btn btn-green" data-enquire="${esc(label)}">Ask about the next batch</button>${p.id === "nism" ? `<a class="btn btn-line" href="#nism">Compare NISM modules</a>` : `<a class="btn btn-line" href="#programmes">See all programmes</a>`}</div>`;
+}
+goalsEl.addEventListener("click", e => { const b = e.target.closest(".goal"); if (b) showGoal(+b.dataset.i); });
+showGoal(0);
+
+/* featured */
+const spark = `<svg class="spark" viewBox="0 0 170 60" fill="none"><path d="M2 50 L22 44 L38 48 L56 30 L72 36 L92 18 L108 24 L128 10 L148 16 L168 4" stroke="#5FD3A5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+$("#feat").innerHTML = PROGRAMMES.map((p, i) => {
+  const label = p.id === "nism" ? "NISM Certification Preparation" : p.id === "opt" ? "Options & Derivatives" : p.name;
+  const cls = i === 1 ? "fcard big flag" : i === 0 ? "fcard big" : "fcard";
+  return `<article class="${cls} reveal">${i === 1 ? spark : ""}<span class="kind">${esc(p.kind)}</span><h3>${esc(p.name)}</h3><p>${esc(p.desc)}</p>
+    <div class="foot"><span>${esc(p.level)} · ${esc(p.mode)}</span><button class="go" data-enquire="${esc(label)}">Enquire →</button></div></article>`;
+}).join("");
+
+/* catalogue */
+let tab = 0;
+const total = CATALOGUE.reduce((n, c) => n + c.items.length, 0);
+$("#tabs").innerHTML = CATALOGUE.map((c, i) => `<button class="tab" role="tab" aria-selected="${i === 0}" data-i="${i}">${esc(c.k)}<span class="n">${c.items.length}</span></button>`).join("");
+function renderCat() {
+  const q = $("#catSearch").value.trim().toLowerCase();
+  let list;
+  if (q) {
+    list = CATALOGUE.flatMap(c => c.items.map(it => [it, c.k])).filter(([it, k]) => (it + " " + k).toLowerCase().includes(q));
+    $("#catDesc").textContent = `${list.length} of ${total} programmes match “${$("#catSearch").value.trim()}”`;
+  } else {
+    const c = CATALOGUE[tab]; list = c.items.map(it => [it, c.k]); $("#catDesc").textContent = c.d;
+  }
+  $$(".tab").forEach(b => b.setAttribute("aria-selected", !q && b.dataset.i == tab));
+  $("#chips").innerHTML = list.length ? list.map(([it, k]) => it === "NISM Certification Programs"
+      ? `<a class="chip" href="#nism">${esc(it)}<small>19 modules →</small></a>`
+      : `<button class="chip" data-enquire="${esc(it)}"><span>${esc(it)}</span>${q ? `<small>${esc(k)}</small>` : `<span class="plus">+</span>`}</button>`).join("")
+    : `<p class="empty">No programme matches that. <a href="#enquire">Ask us</a> — we'll point you to the closest one.</p>`;
+}
+$("#tabs").addEventListener("click", e => { const b = e.target.closest(".tab"); if (!b) return; tab = +b.dataset.i; $("#catSearch").value = ""; renderCat(); });
+$("#catSearch").addEventListener("input", renderCat);
+renderCat();
+
+/* NISM */
+let role = "";
+$("#rolef").innerHTML = `<button aria-pressed="true" data-r="">All</button>` + Object.entries(ROLES).map(([k, v]) => `<button aria-pressed="false" data-r="${k}">${esc(v)}</button>`).join("");
+function renderMods() {
+  const q = $("#modSearch").value.trim().toLowerCase();
+  const list = NISM.filter(([c, n, r, w]) => (!role || r === role) && (!q || `series ${c} ${n} ${w} ${ROLES[r]}`.toLowerCase().includes(q)));
+  $("#modList").innerHTML = list.length ? list.map(([c, n, r, w]) => `<div class="mod"><span class="code">SERIES ${esc(c)}</span><div><b>${esc(n)}</b><span>${esc(w)}</span></div><button data-enquire="NISM Series ${esc(c)} – ${esc(n)}">Enquire</button></div>`).join("")
+    : `<p class="mod" style="display:block;color:#A9B3C9">No module matches. Try “derivatives” or “mutual fund”.</p>`;
+}
+$("#rolef").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; role = b.dataset.r; $$("#rolef button").forEach(x => x.setAttribute("aria-pressed", x === b)); renderMods(); });
+$("#modSearch").addEventListener("input", renderMods);
+renderMods();
+
+/* hero chart: candles drawn with a seeded random walk + trend line + annotations */
+(function chart() {
+  const svg = $("#chartSvg"), W = 1440, H = 210, n = 60, step = W / n;
+  let s = 7; const rnd = () => (s = (s * 16807) % 2147483647) / 2147483647;
+  let price = 150, pts = [], out = "";
+  for (let i = 0; i < n; i++) {
+    const drift = i < 22 ? -0.4 : 1.25;
+    const o = price, c = o - drift * 2.2 + (rnd() - 0.5) * 9;
+    const hi = Math.min(o, c) - rnd() * 7, lo = Math.max(o, c) + rnd() * 7;
+    price = Math.max(28, Math.min(185, c));
+    const x = i * step + step / 2, up = c < o, col = up ? "#1DBE85" : "#E0574B";
+    out += `<g class="c" style="animation-delay:${(i * 0.025).toFixed(3)}s"><line x1="${x}" x2="${x}" y1="${hi}" y2="${lo}" stroke="${col}" stroke-width="1.4" opacity=".55"/><rect x="${x - step * 0.28}" y="${Math.min(o, c)}" width="${step * 0.56}" height="${Math.max(2, Math.abs(c - o))}" fill="${col}" opacity=".5" rx="1.5"/></g>`;
+    pts.push([x, (o + c) / 2]);
+  }
+  let ma = [];
+  for (let i = 0; i < n; i++) { const w = pts.slice(Math.max(0, i - 6), i + 1); ma.push([pts[i][0], w.reduce((a, p) => a + p[1], 0) / w.length]); }
+  const path = "M" + ma.map(p => p.map(v => v.toFixed(1)).join(" ")).join(" L");
+  const sup = Math.max(...pts.slice(12, 26).map(p => p[1])) + 8;
+  svg.innerHTML = `<defs><linearGradient id="fade" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#0A1733" stop-opacity="0"/><stop offset="1" stop-color="#0A1733" stop-opacity=".9"/></linearGradient></defs>
+    <line x1="${step*8}" x2="${step*34}" y1="${sup}" y2="${sup}" stroke="#E8B545" stroke-width="1.2" stroke-dasharray="5 6" opacity=".8"/>
+    <text class="tag" x="${step*8}" y="${sup + 18}" fill="#E8B545">SUPPORT</text>
+    ${out}
+    <path class="draw" d="${path}" stroke="#5FD3A5" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+    <text class="tag" x="${step*40}" y="${ma[40][1] - 16}" fill="#5FD3A5">TREND · 7-MA</text>
+    <rect x="0" y="0" width="${W}" height="${H}" fill="url(#fade)" opacity=".35"/>`;
+})();
+
+/* reveal + counters */
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .12 });
+$$(".reveal").forEach(el => io.observe(el));
+const co = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return; co.unobserve(e.target);
+  const el = e.target, end = +el.dataset.count, suf = el.dataset.suffix || ""; let t0;
+  const f = t => { t0 ??= t; const k = Math.min(1, (t - t0) / 1100); el.textContent = Math.round(end * (1 - Math.pow(1 - k, 3))) + suf; if (k < 1) requestAnimationFrame(f); };
+  requestAnimationFrame(f);
+}), { threshold: .6 });
+$$("[data-count]").forEach(el => co.observe(el));
+
+/* ---------------- lead form ---------------- */
+const form = $("#leadForm");
+const CODE_BY_PROG = { "Technical Analysis Masterclass":"TA", "Options & Derivatives":"OPT", "Financial Planning & Investment":"FPI", "Financial Literacy Foundation":"FLF", "Algo Trading":"ALGO", "Forex Trading":"FOREX", "Crypto Trading":"CRYPTO", "CFP® Preparation":"CFP" };
+function nismCode(label) { const m = /NISM Series ([IVXLA-]+)/.exec(label); return m ? "NISM-" + m[1] : null; }
+async function courseId(code) {
+  if (!code) return null;
+  try {
+    const r = await fetch(`${SITE.CRM_SUPABASE_URL}/rest/v1/courses?select=id&code=eq.${encodeURIComponent(code)}&limit=1`, { headers: { apikey: SITE.CRM_ANON_KEY, Authorization: `Bearer ${SITE.CRM_ANON_KEY}` } });
+    const j = await r.json(); return j[0]?.id || null;
+  } catch { return null; }
+}
+form.addEventListener("submit", async e => {
+  e.preventDefault();
+  const v = Object.fromEntries(new FormData(form)), err = $("#formErr"), btn = $("#submitBtn");
+  const fail = m => { err.textContent = m; err.hidden = false; };
+  err.hidden = true;
+  if (v.website) return;                                    // bot trap
+  const name = (v.name || "").trim(), digits = (v.phone || "").replace(/\D/g, "").replace(/^(91|0)(?=\d{10}$)/, "");
+  if (name.length < 2) return fail("Please enter your name.");
+  if (!/^[6-9]\d{9}$/.test(digits)) return fail("Please enter a valid 10-digit mobile number.");
+  if (!form.consent.checked) return fail("Please tick the box so we can contact you.");
+  const prog = v.programme || "Not sure — please advise";
+  const waText = `Hi IFPI, I'd like the brochure.\nName: ${name}\nMobile: ${digits}\nInterested in: ${prog}` + (v.status ? `\nI am: ${v.status}` : "") + (v.mode ? `\nMode: ${v.mode}` : "") + (v.city ? `\nCity: ${v.city}` : "");
+  const live = SITE.CRM_SUPABASE_URL && SITE.CRM_ANON_KEY;
+  if (!live) { window.open(wa(waText), "_blank", "noopener"); return done(name, waText, false); }
+  btn.disabled = true; btn.textContent = "Sending…";
+  const qs = new URLSearchParams(location.search);
+  const source = { "google search":"Google Search", instagram:"Instagram", facebook:"Facebook", youtube:"YouTube", referral:"Referral", whatsapp:"WhatsApp" }[(qs.get("utm_source") || v.source || "").toLowerCase()] || "Website";
+  const notes = [`Website enquiry — interested in: ${prog}`, v.status && `I am: ${v.status}`, v.mode && `Preferred mode: ${v.mode}`, v.source && `Heard about us on: ${v.source}`].filter(Boolean).join("\n");
+  const row = { full_name: name, phone: "91" + digits, email: null, city: (v.city || "").trim() || null, source, campaign: qs.get("utm_campaign") || qs.get("campaign") || null,
+    stage: "New", priority: "Warm", follow_up_on: new Date().toISOString().slice(0, 10), notes,
+    course_id: await courseId(CODE_BY_PROG[prog] || nismCode(prog)) };
+  try {
+    const r = await fetch(`${SITE.CRM_SUPABASE_URL}/rest/v1/leads`, { method: "POST",
+      headers: { apikey: SITE.CRM_ANON_KEY, Authorization: `Bearer ${SITE.CRM_ANON_KEY}`, "Content-Type": "application/json", Prefer: "return=minimal" },
+      body: JSON.stringify(row) });
+    if (r.ok || r.status === 409) return done(name, waText, true, r.status === 409);
+    throw new Error(r.status);
+  } catch {
+    btn.disabled = false; btn.textContent = "Send me the brochure";
+    fail("Couldn't send just now. Please try again, or message us on WhatsApp.");
+  }
+});
+function done(name, waText, saved, repeat) {
+  $("#formWrap").innerHTML = `<div class="success"><div class="tick">✓</div><h3>Thank you, ${esc(name.split(" ")[0])}!</h3>
+    <p>${repeat ? "We already have your enquiry — a counsellor will reach you shortly." : saved ? "A counsellor will call or WhatsApp you shortly with the brochure and batch details." : "WhatsApp has opened with your details — just press send and we'll reply with the brochure."}</p>
+    <a class="btn btn-green" href="${wa(waText)}" target="_blank" rel="noopener">${saved ? "Chat now on WhatsApp" : "Open WhatsApp again"}</a></div>`;
+}
+})();
+</script>
+</body>
+</html>
