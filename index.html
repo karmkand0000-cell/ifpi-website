@@ -346,6 +346,7 @@ footer a:hover{color:#fff}
       <a href="#faculty">Faculty</a>
       <a href="#faq">FAQ</a>
       <a href="#contact">Contact</a>
+      <a href="crm/" style="opacity:.75">Staff login</a>
     </nav>
     <div class="nav-cta">
       <a class="phone" href="tel:+919911610328"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>+91 99116 10328</a>
@@ -355,7 +356,7 @@ footer a:hover{color:#fff}
   </div>
 </header>
 <nav class="mnav" id="mnav" aria-label="Mobile">
-  <a href="#start">Find your course</a><a href="#programmes">Programmes</a><a href="#nism">NISM preparation</a><a href="#faculty">Faculty</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
+  <a href="#start">Find your course</a><a href="#programmes">Programmes</a><a href="#nism">NISM preparation</a><a href="#faculty">Faculty</a><a href="#faq">FAQ</a><a href="#contact">Contact</a><a href="crm/">Staff login (CRM)</a>
   <a class="btn btn-green" href="#enquire">Book free counselling</a>
 </nav>
 
@@ -589,7 +590,7 @@ footer a:hover{color:#fff}
     <div class="foot-grid">
       <div><a class="brand" href="#top"><img src="https://ifpi.in/ifpi-logo.png" alt="" width="44" height="44"><span><b>IFPI</b><small>Financial Planning &amp; Investment</small></span></a>
         <p style="margin-top:18px;font-size:.93rem;max-width:320px">A financial-education institute helping students, professionals and investors learn the markets with structure and discipline.</p></div>
-      <div><h4>Explore</h4><ul><li><a href="#start">Find your course</a></li><li><a href="#programmes">Programmes</a></li><li><a href="#nism">NISM preparation</a></li><li><a href="#faculty">Faculty</a></li><li><a href="#faq">FAQ</a></li></ul></div>
+      <div><h4>Explore</h4><ul><li><a href="#start">Find your course</a></li><li><a href="#programmes">Programmes</a></li><li><a href="#nism">NISM preparation</a></li><li><a href="#faculty">Faculty</a></li><li><a href="#faq">FAQ</a></li><li><a href="crm/">Staff login (CRM)</a></li></ul></div>
       <div><h4>Policies</h4><ul><li><a href="https://ifpi.in/terms.html">Terms &amp; Conditions</a></li><li><a href="https://ifpi.in/privacy.html">Privacy Policy</a></li><li><a href="https://ifpi.in/refund.html">Refund &amp; Cancellation</a></li><li><a href="https://ifpi.in/disclaimer.html">Disclaimer</a></li></ul></div>
       <div><h4>Get in touch</h4><ul><li><a href="tel:+919911610328">+91 99116 10328</a></li><li><a href="mailto:info@ifpi.in">info@ifpi.in</a></li><li>Uttam Nagar, near Dwarka Mor Metro, New Delhi – 110059</li></ul></div>
     </div>
@@ -606,20 +607,16 @@ footer a:hover{color:#fff}
 </div>
 
 <script>
-/* ============================================================
-   SETTINGS — the only part you may need to edit.
-   Paste the same Supabase values used in the IFPI CRM (js/config.js)
-   and every enquiry from this form lands in the CRM as a new lead.
-   Until then, the form opens WhatsApp with the details filled in.
-   ============================================================ */
-const SITE = {
-  CRM_SUPABASE_URL: "",   // e.g. "https://abcdxyz.supabase.co"
-  CRM_ANON_KEY: "",       // the "anon public" key
-  WHATSAPP: "919910613552",
-};
+/* Website settings. Database keys live in ONE place: crm/js/config.js.
+   Once they are set there, every enquiry from this site lands in the CRM. */
+const SITE = { WHATSAPP: "919910613552" };
 </script>
-<script>
-(() => {
+<script type="module">
+import { initBackend, submitEnquiry, publicCourses, LIVE } from "./crm/js/db.js";
+import { CONFIG } from "./crm/js/config.js";
+import { todayISO } from "./crm/js/ui.js";
+const backend = initBackend().catch(e => console.error(e));
+{
 const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
 const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const wa = text => `https://wa.me/${SITE.WHATSAPP}?text=${encodeURIComponent(text)}`;
@@ -812,15 +809,17 @@ const co = new IntersectionObserver(es => es.forEach(e => {
 }), { threshold: .6 });
 $$("[data-count]").forEach(el => co.observe(el));
 
-/* ---------------- lead form ---------------- */
+/* ---------------- lead form → CRM ---------------- */
 const form = $("#leadForm");
 const CODE_BY_PROG = { "Technical Analysis Masterclass":"TA", "Options & Derivatives":"OPT", "Financial Planning & Investment":"FPI", "Financial Literacy Foundation":"FLF", "Algo Trading":"ALGO", "Forex Trading":"FOREX", "Crypto Trading":"CRYPTO", "CFP® Preparation":"CFP" };
-function nismCode(label) { const m = /NISM Series ([IVXLA-]+)/.exec(label); return m ? "NISM-" + m[1] : null; }
-async function courseId(code) {
-  if (!code) return null;
+const nismCode = label => { const m = /NISM Series ([IVXLA-]+)/.exec(label); return m ? "NISM-" + m[1] : null; };
+async function courseIdFor(prog) {
   try {
-    const r = await fetch(`${SITE.CRM_SUPABASE_URL}/rest/v1/courses?select=id&code=eq.${encodeURIComponent(code)}&limit=1`, { headers: { apikey: SITE.CRM_ANON_KEY, Authorization: `Bearer ${SITE.CRM_ANON_KEY}` } });
-    const j = await r.json(); return j[0]?.id || null;
+    await backend;
+    const list = await publicCourses();
+    const code = CODE_BY_PROG[prog] || nismCode(prog);
+    const hit = code ? list.find(c => (c.code || "").toUpperCase() === code) : list.find(c => c.name.toLowerCase() === prog.toLowerCase());
+    return hit?.id || null;
   } catch { return null; }
 }
 form.addEventListener("submit", async e => {
@@ -835,22 +834,22 @@ form.addEventListener("submit", async e => {
   if (!form.consent.checked) return fail("Please tick the box so we can contact you.");
   const prog = v.programme || "Not sure — please advise";
   const waText = `Hi IFPI, I'd like the brochure.\nName: ${name}\nMobile: ${digits}\nInterested in: ${prog}` + (v.status ? `\nI am: ${v.status}` : "") + (v.mode ? `\nMode: ${v.mode}` : "") + (v.city ? `\nCity: ${v.city}` : "");
-  const live = SITE.CRM_SUPABASE_URL && SITE.CRM_ANON_KEY;
-  if (!live) { window.open(wa(waText), "_blank", "noopener"); return done(name, waText, false); }
+  // Until the CRM database is connected, also hand the enquiry to WhatsApp so no real lead is lost.
+  const waWin = LIVE ? null : window.open(wa(waText), "_blank", "noopener");
   btn.disabled = true; btn.textContent = "Sending…";
   const qs = new URLSearchParams(location.search);
-  const source = { "google search":"Google Search", instagram:"Instagram", facebook:"Facebook", youtube:"YouTube", referral:"Referral", whatsapp:"WhatsApp" }[(qs.get("utm_source") || v.source || "").toLowerCase()] || "Website";
+  const want = (qs.get("utm_source") || qs.get("source") || v.source || "").toLowerCase();
+  const source = CONFIG.SOURCES.find(s => s.toLowerCase() === want) || "Website";
   const notes = [`Website enquiry — interested in: ${prog}`, v.status && `I am: ${v.status}`, v.mode && `Preferred mode: ${v.mode}`, v.source && `Heard about us on: ${v.source}`].filter(Boolean).join("\n");
-  const row = { full_name: name, phone: "91" + digits, email: null, city: (v.city || "").trim() || null, source, campaign: qs.get("utm_campaign") || qs.get("campaign") || null,
-    stage: "New", priority: "Warm", follow_up_on: new Date().toISOString().slice(0, 10), notes,
-    course_id: await courseId(CODE_BY_PROG[prog] || nismCode(prog)) };
   try {
-    const r = await fetch(`${SITE.CRM_SUPABASE_URL}/rest/v1/leads`, { method: "POST",
-      headers: { apikey: SITE.CRM_ANON_KEY, Authorization: `Bearer ${SITE.CRM_ANON_KEY}`, "Content-Type": "application/json", Prefer: "return=minimal" },
-      body: JSON.stringify(row) });
-    if (r.ok || r.status === 409) return done(name, waText, true, r.status === 409);
-    throw new Error(r.status);
-  } catch {
+    await backend;
+    await submitEnquiry({ full_name: name, phone: CONFIG.COUNTRY_CODE + digits, email: null, city: (v.city || "").trim() || null,
+      course_id: await courseIdFor(prog), source, campaign: qs.get("utm_campaign") || qs.get("campaign") || null,
+      stage: "New", priority: "Warm", follow_up_on: todayISO(), notes });
+    done(name, waText, LIVE);
+  } catch (ex) {
+    if (ex.code === "23505") return done(name, waText, LIVE, true);
+    if (!LIVE) return done(name, waText, false);
     btn.disabled = false; btn.textContent = "Send me the brochure";
     fail("Couldn't send just now. Please try again, or message us on WhatsApp.");
   }
@@ -860,7 +859,7 @@ function done(name, waText, saved, repeat) {
     <p>${repeat ? "We already have your enquiry — a counsellor will reach you shortly." : saved ? "A counsellor will call or WhatsApp you shortly with the brochure and batch details." : "WhatsApp has opened with your details — just press send and we'll reply with the brochure."}</p>
     <a class="btn btn-green" href="${wa(waText)}" target="_blank" rel="noopener">${saved ? "Chat now on WhatsApp" : "Open WhatsApp again"}</a></div>`;
 }
-})();
+}
 </script>
 </body>
 </html>
